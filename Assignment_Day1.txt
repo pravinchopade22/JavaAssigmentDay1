@@ -1,0 +1,82 @@
+Q-1. Write an SQL query to fetch “FIRST_NAME” from Worker table using the alias name as <WORKER_NAME>.
+		
+	 SELECT FIRST_NAME as WORKER_NAME FROM pravin.worker;
+
+
+Q-2. Write an SQL query to fetch “FIRST_NAME” from Worker table in upper case.
+     SELECT upper(FIRST_NAME) as WORKER_NAME FROM pravin.worker;
+	 
+Q-3. Write an SQL query to fetch unique values of DEPARTMENT from Worker table.
+     SELECT distinct DEPARTMENT FROM pravin.worker;
+	 
+Q-4. Write an SQL query to print the first three characters of FIRST_NAME from Worker table.
+     SELECT substring(first_name,1,3)  FROM pravin.worker;
+  
+Q-5. Write an SQL query to find the position of the alphabet (‘a’) in the first name column ‘Amitabh’ from Worker table.
+     SELECT position('a' IN first_name)  FROM pravin.worker where first_name= 'Amitabh' ;
+
+
+Q-6. Write an SQL query to print the FIRST_NAME from Worker table after removing white spaces from the right side.
+	 SELECT rtrim(first_name)  FROM pravin.worker
+	 
+Q-7. Write an SQL query to print the DEPARTMENT from Worker table after removing white spaces from the left side.
+	SELECT ltrim(DEPARTMENT)  FROM pravin.worker
+	
+Q-8. Write an SQL query that fetches the unique values of DEPARTMENT from Worker table and prints its length.
+	select char_length(DEPARTMENT) FROM pravin.worker where DEPARTMENT in (SELECT distinct(DEPARTMENT)  FROM pravin.worker)
+	
+Q-9. Write an SQL query to print the FIRST_NAME from Worker table after replacing ‘a’ with ‘A’.
+	select replace(FIRST_NAME,'a','A') FROM pravin.worker
+
+Q-10.Write an SQL query to print the FIRST_NAME and LAST_NAME from Worker table into a single column COMPLETE_NAME. A space char should separate them.
+
+	select concat(FIRST_NAME," ",LAST_NAME) as COMPLETE_NAME from pravin.worker
+
+Q-11. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending.
+	select * from pravin.worker order by first_name asc
+					
+Q-12. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending and DEPARTMENT Descending.	
+	select * from pravin.worker order by first_name asc, department desc
+	
+Q-13. Write an SQL query to print details for Workers with the first name as “Vipul” and “Satish” from Worker table.	
+	  select * from pravin.worker where  first_name ='Vipul' and first_name ='Satish' 				
+
+Q-14. Write an SQL query to print details of workers excluding first names, “Vipul” and “Satish” from Worker table.	
+	  select * from pravin.worker where  first_name !='Vishal' and first_name !='Vivek' 	
+	  
+Q-15. Write an SQL query to print details of Workers with DEPARTMENT name as “Admin”.
+	  select * from pravin.worker where  DEPARTMENT ='Admin'					
+
+Q-16. Write an SQL query to print details of the Workers whose FIRST_NAME contains ‘a’.
+	  select * from pravin.worker where  FIRST_NAME like '%a%'					
+
+Q-17. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘a’.
+      select * from pravin.worker where  FIRST_NAME like '%a'					
+
+Q-18. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘h’ and contains six alphabets.					
+Q-19. Write an SQL query to print details of the Workers whose SALARY lies between 100000 and 500000.	
+	  select * from pravin.worker where  salary between 10000 and 50000				
+
+Q-20. Write an SQL query to print details of the Workers who have joined in Feb’2014.	
+	select * from pravin.worker  WHERE 
+	JOINING_DATE between  STR_TO_DATE('2014-02-01 00:00:00','YYYY-MM-DD HH:MI:SS') and STR_TO_DATE('2014-02-28 23:59:59','YYYY-MM-DD HH:MI:SS') 
+
+Q-21. Write an SQL query to fetch the count of employees working in the department ‘Admin’.	
+	select count(*) from pravin.worker  WHERE department='Admin'
+			
+Q-22. Write an SQL query to fetch worker names with salaries >= 50000 and <= 100000.
+	select FIRST_NAME from pravin.worker  WHERE salary between 50000 and 100000				
+
+Q-23. Write an SQL query to fetch the no. of workers for each department in the descending order.
+	select count(*) from pravin.worker group by department order by department desc 				
+Q-24. Write an SQL query to print details of the Workers who are also Managers.				
+Q-25. Write an SQL query to fetch duplicate records having matching data in some fields of a table.	
+	select FIRST_NAME,LAST_NAME,DEPARTMENT,count(DEPARTMENT) from pravin.worker group by department having count(DEPARTMENT) >1			
+Q-26. Write an SQL query to show only odd rows from a table.				
+Q-27. Write an SQL query to show only even rows from a table.				
+
+Q-28. Write an SQL query to clone a new table from another table.
+	create table pravin.worker_dup AS select * from  pravin.worker
+				
+Q-29. Write an SQL query to fetch intersecting records of two tables.				
+Q-30. Write an SQL query to show records from one table that another table does not have.								
